@@ -280,7 +280,8 @@ public class App {
         while (nextContact) {
             System.out.println();
             UI.printASCII("IT", "Criar contacto de colaborador:");
-            System.out.println(" - Contacto com prioridade mais elevada primeiro.");
+            System.out.println(" - Só são aceites emails ou telefones válidos.");
+            System.out.println(" - Insira o contacto com prioridade mais elevada primeiro.");
 
             String contacto = UI.prompt(
                     "Contacto:",
@@ -288,11 +289,7 @@ public class App {
                     "O contacto deve ser um email ou número de telefone válido.");
             if (contacto == null) return;
 
-            String descricao = UI.prompt(
-                    "Descrição:",
-                    (str) -> Validator.isLength(str,50),
-                    "O descricao do contacto não deve passar os 50 characteres.");
-            if (descricao == null) return;
+            String descricao = Validator.isEmail(contacto) ? "email" : "telefone";
 
             contactos.add(new CONTACTO(noordemContact, contacto, descricao));
 
@@ -314,11 +311,7 @@ public class App {
                         "O contacto deve ser um email ou número de telefone válido.");
                 if (contacto_emergencia == null) return;
 
-                String descricao_emergencia = UI.prompt(
-                        "Descrição:",
-                        (str) -> Validator.isLength(str,50),
-                        "O descricao do contacto de emergência não deve passar os 50 characteres.");
-                if (descricao_emergencia == null) return;
+                String descricao_emergencia = Validator.isEmail(contacto_emergencia) ? "email" : "telefone";
 
                 String contacto_emergencia_nome = UI.prompt(
                         "Nome:",

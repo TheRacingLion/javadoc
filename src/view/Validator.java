@@ -99,7 +99,7 @@ public final class Validator {
      * @param email The input to verify
      * @return {@code Boolean} indicating if the input is a valid email
      */
-    private static boolean isEmail(String email) {
+    public static boolean isEmail(String email) {
         return EMAIL_PATTERN.matcher(email).matches();
     }
 
