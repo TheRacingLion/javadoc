@@ -434,6 +434,7 @@ public class App {
         if (nident == null) return;
 
         String programaId = selecionarPrograma(programas);
+        if (programaId == null) return;
 
         boolean success = Database.alterarProgramaVoluntario(nident, programaId);
         if (success) {
@@ -457,6 +458,7 @@ public class App {
             return;
         }
         String programaId = selecionarPrograma(programas);
+        if (programaId == null) return;
 
         boolean success = Database.cancelarProgramaCurtaDuracao(programaId);
         if (success) {

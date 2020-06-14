@@ -41,9 +41,9 @@ public class Database {
         String SELECT_ALL_PROGRAMS;
         if (ativos) {
             SELECT_ALL_PROGRAMS = "select * from PROGRAMA where datainicio > CAST(GETDATE() AS DATE) " +
-                                        (filter != null ? "AND atrdiscriminante = " + filter : "");
+                                        (filter != null ? ("AND atrdiscriminante = '" + filter + "'") : "");
         } else {
-            SELECT_ALL_PROGRAMS = "select * from PROGRAMA " + (filter != null ? "where atrdiscriminante = " + filter : "");
+            SELECT_ALL_PROGRAMS = "select * from PROGRAMA " + (filter != null ? ("where atrdiscriminante = '" + filter + "'") : "");
         }
 
         PreparedStatement listPrograms = null;
